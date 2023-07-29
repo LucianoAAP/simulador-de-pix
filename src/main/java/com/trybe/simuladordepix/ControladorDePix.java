@@ -21,6 +21,13 @@ public class ControladorDePix {
    *         o resultado da operação.
    */
   public String aoConfirmarPix(int valor, String chave) {
-    return null; // TODO: Implementar.
+    try {
+      this.processadorDePix.executarPix(valor, chave);
+    } catch (ErroDePix e) {
+      return e.getMessage();
+    } catch (IOException e) {
+      return Mensagens.ERRO_DE_CONEXAO;
+    }
+    return Mensagens.SUCESSO;
   }
 }
