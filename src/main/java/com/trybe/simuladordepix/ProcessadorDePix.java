@@ -33,14 +33,14 @@ public class ProcessadorDePix {
     try {
       String result = connection.enviarPix(valor, chave);
       switch (result) {
-      case CodigosDeRetorno.SUCESSO:
-        break;
-      case CodigosDeRetorno.SALDO_INSUFICIENTE:
-        throw new ErroSaldoInsuficiente(Mensagens.SALDO_INSUFICIENTE);
-      case CodigosDeRetorno.CHAVE_PIX_NAO_ENCONTRADA:
-        throw new ErroChaveNaoEncontrada(Mensagens.CHAVE_NAO_ENCONTRADA);
-      default:
-        throw new ErroInterno(Mensagens.ERRO_INTERNO);
+        case CodigosDeRetorno.SUCESSO:
+          break;
+        case CodigosDeRetorno.SALDO_INSUFICIENTE:
+          throw new ErroSaldoInsuficiente(Mensagens.SALDO_INSUFICIENTE);
+        case CodigosDeRetorno.CHAVE_PIX_NAO_ENCONTRADA:
+          throw new ErroChaveNaoEncontrada(Mensagens.CHAVE_NAO_ENCONTRADA);
+        default:
+          throw new ErroInterno(Mensagens.ERRO_INTERNO);
       }
     } finally {
       connection.close();
